@@ -121,7 +121,50 @@
 
 
 
-   
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="6"
+        android:padding="25dp"
+        >
+
+        <ProgressBar
+            android:id="@+id/PrePhotoCreaterProgressBarID"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:indeterminate="true"
+            style="?android:attr/progressBarStyle"
+            android:layout_gravity="center"
+            android:gravity="center"
+            android:layout_centerInParent="true"
+            android:visibility="gone"
+
+            />
+
+        <TextView
+
+            android:id="@+id/PrePhotoCreaterTextDescriptionID"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:textSize="16dp"
+            android:text="Congrats for getting your Job accepted!\n\nWaiting for the Job Seeker to post the Pre-Job photo."
+            android:gravity="center"
+            android:layout_centerInParent="true"
+            android:visibility="gone"
+            android:background="@drawable/text_fields_background"
+            />
+
+
+
+        <ImageView
+            android:id="@+id/PrePhotoCreaterImageID"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:visibility="gone"
+            />
+
+
+    </RelativeLayout>
 
 
 
