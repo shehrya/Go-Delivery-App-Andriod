@@ -21,6 +21,21 @@ import android.widget.Toast;
 
 public class PaymentWorkerActivity extends Activity {
 
+    String jobID = null;
+    String jobFileName = null;
+
+    TextView paymentDescription;
+    TextView paymentTitle;
+
+    String[] jobDetails = new String[22];
+
+    String amount = null;
+
+    Button LogOutButton;
+    Button RefreshButton;
+
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
