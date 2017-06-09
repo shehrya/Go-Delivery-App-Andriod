@@ -111,6 +111,37 @@ public class PaymentWorkerActivity extends Activity {
         }
 
 
+        // onPostExecute displays the results of the AsyncTask.
+        @Override
+        protected void onPostExecute(String result) {
+
+
+
+
+
+            if (result.equals("OK"))
+            {
+
+
+                amount = jobDetails[8];
+
+
+
+                Double amountDoubleFormat = Double.valueOf(amount);
+
+
+                double rounded = (double) Math.round(amountDoubleFormat * 100.0) / 100.0;
+
+                String roundedAmount = String.valueOf(rounded);
+
+                paymentDescription.setText("Payment Requested!\n\n" + jobDetails[1] + " is requested to pay you ₦" + roundedAmount +".");
+
+            }
+
+
+        }
+    }
+
 
 
 
