@@ -142,11 +142,82 @@ public class PaymentWorkerActivity extends Activity {
         }
     }
 
+    private String FetchJobDetails(String myurl) throws IOException, UnsupportedEncodingException {
+        InputStream is = null;
+
+        // Only display the first 500 characters of the retrieved
+        // web page content.
+
+
+        try {
+            URL url = new URL(myurl);
+            HttpURLConnection conn = (HttpURLConnection) url.openConnection();
+            conn.setUseCaches(false);
+            conn.setDefaultUseCaches(false);
+            conn.addRequestProperty("Cache-Control", "no-cache");
+            conn.setReadTimeout(10000 /* milliseconds */);
+            conn.setConnectTimeout(15000 /* milliseconds */);
+            conn.setRequestMethod("GET");
+            conn.setDoInput(true);
+            // Starts the query
+            conn.connect();
+
+
+
+            is = conn.getInputStream();
+
+            BufferedReader textReader = new BufferedReader(new InputStreamReader(is));
+
+
+            String readlineTextListing;
+            String complexJobListingString= null;
 
 
 
 
-}
+            while ((readlineTextListing = textReader.readLine()) != null) {
+
+                complexJobListingString = readlineTextListing;
+
+
+                if(complexJobListingString.length() > 25) {
+
+
+
+                    int counter = 0;
+
+
+                    for (int i = 0; i < complexJobListingString.length(); ++i) {
+
+                        if(complexJobListingString.charAt(i) == ' ')
+                        {
+                            continue;
+                        }
+
+                        if (complexJobListingString.charAt(i) == '|') {
+                            ++counter;
+                            continue;
+                        }
+
+
+                        jobDetails[counter] = jobDetails[counter] + complexJobListingString.charAt(i);
+
+
+                    }
+
+
+                }
+
+
+            }
+
+
+
+
+
+
+
+        }
 
 
 
