@@ -91,6 +91,24 @@ public class PaymentWorkerActivity extends Activity {
 
     }
 
+    private class FetchAcceptedJobDetails extends AsyncTask<String, Void, String> {
+        @Override
+        protected String doInBackground(String... urls) {
+
+            // params comes from the execute() call: params[0] is the url.
+            try {
+                return FetchJobDetails(urls[0]);
+            } catch (IOException e) {
+                return "Unable to retrieve web page. URL may be invalid.";
+            }
+        }
+
+        @Override
+        protected void onPreExecute() {
+            super.onPreExecute();
+
+            //progressBar.setVisibility(View.VISIBLE);
+        }
 
 
 
