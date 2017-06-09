@@ -41,6 +41,35 @@ public class PaymentWorkerActivity extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.payment_job_worker);
 
+        Typeface font = Typeface.createFromAsset(getAssets(), "FancyFont_1.ttf");
+
+        paymentTitle = (TextView) findViewById(R.id.PaymentJobWorkerTitleID);
+        paymentDescription = (TextView) findViewById(R.id.PaymentJobWorkerDescriptionID);
+
+        LogOutButton = (Button) findViewById(R.id.LogoutButtonID);
+
+        LogOutButton.setTypeface(font);
+        LogOutButton.setTextColor(Color.WHITE);
+
+
+        RefreshButton = (Button) findViewById(R.id.RefreshButtonID);
+
+        RefreshButton.setTypeface(font);
+        RefreshButton.setTextColor(Color.WHITE);
+
+
+        paymentTitle.setTypeface(font);
+        paymentTitle.setTextColor(Color.WHITE);
+
+        paymentDescription.setTypeface(font);
+        paymentDescription.setTextColor(Color.WHITE);
+
+
+
+
+
+
+
 
     }
 
