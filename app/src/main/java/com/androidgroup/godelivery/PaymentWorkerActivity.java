@@ -212,12 +212,120 @@ public class PaymentWorkerActivity extends Activity {
             }
 
 
+            if (conn.getResponseCode() == HttpURLConnection.HTTP_OK)
+            {
+                return "OK";
+            }
+            else
+            {
+                return "NetworkError";
+            }
+
+
+
+            // Makes sure that the InputStream is closed after the app is
+            // finished using it.
+        } finally {
+
+
+            if (is != null)
+            {
+                is.close();
+
+
+            }
+
+        }
+    }
+
+
+
+
+
+
+
+    private class GetPaymentStatusFromServer extends AsyncTask<String, Void, String> {
+        @Override
+        protected String doInBackground(String... urls) {
+
+            // params comes from the execute() call: params[0] is the url.
+            try {
+                return GetPaymentStatus(urls[0]);
+            } catch (IOException e) {
+                return "NotFound";
+            }
+        }
+
+        @Override
+        protected void onPreExecute() {
+            super.onPreExecute();
+
+            //progressBar.setVisibility(View.VISIBLE);
+        }
+
+        // onPostExecute displays the results of the AsyncTask.
+        @Override
+        protected void onPostExecute(String result) {
+
+
+            // progressBar.setVisibility(View.GONE);
+
+
+
+            if (result.length() > 0) {
+
+
+                if (result.equals("OK"))
+                {
+                    paymentDescription.setText("Job Completed!\n\nPayment has been made by the Job Owner.");
+
+                    RemoveJob();
+                }
+
+                else if (result.equals("NotFound"))
+                {
+
+                    new FetchAcceptedJobDetails().execute("http://192.168.0.185/AndroidApps/GoDelivery/AcceptedJobs/" + jobFileName);
+
+                }
+                else if (result.equals("NetworkError"))
+                {
+
+                    Toast.makeText(getApplicationContext(), "Network Problem", Toast.LENGTH_SHORT).show();
+
+                }
+
+
+
+
+
+            }
+
+
+
+            //progressBar.setVisibility(View.GONE);
+
+
+
+
+
+
 
 
 
 
 
         }
+    }
+
+
+
+
+
+
+
+
+}
 
 
 
