@@ -66,12 +66,38 @@ public class PaymentWorkerActivity extends Activity {
 
 
 
+        Intent intent  = getIntent();
+
+        jobID = intent.getStringExtra("AcceptedJobIDNumber");
 
 
+        for (int i = 0; i < jobDetails.length; ++i) {
+            jobDetails[i] = "";
+
+        }
+
+
+        jobFileName = (jobID + ".txt");
+
+
+
+
+
+
+
+        new GetPaymentStatusFromServer().execute("http://192.168.0.185/AndroidApps/GoDelivery/PaymentsStatus/" + jobID + "-Status.txt");
 
 
 
     }
+
+
+
+
+
+
+
+}
 
 
 
