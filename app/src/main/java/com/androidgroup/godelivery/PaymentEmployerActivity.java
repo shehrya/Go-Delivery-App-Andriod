@@ -304,7 +304,7 @@ public class PaymentEmployerActivity extends Activity {
             if (result.equals("OK")) {
 
 
-                Intent intent = new Intent(PaymentJobCreaterActivity.this, DeciderActivity.class);
+                Intent intent = new Intent(PaymentJobEmployerActivity.this, DeciderActivity.class);
                 startActivity(intent);
                 finish();
 
