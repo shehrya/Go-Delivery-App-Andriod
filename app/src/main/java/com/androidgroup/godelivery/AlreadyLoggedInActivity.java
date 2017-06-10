@@ -13,13 +13,54 @@ import android.preference.PreferenceManager;
 import android.util.Log;
 public class AlreadyLoggedInActivity extends Activity {
 
+    String loginEmailString = null;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.already_logged_in);
 
 
+
+        LoadLoginEmail();
+
+        if(loginEmailString != null)
+
+
+        {
+
+
+
+            Intent intent = new Intent(AlreadyLoggedInActivity.this, DeciderActivity.class);
+
+            startActivity(intent);
+
+            finish();
+
+        }
+
+        else
+        {
+
+
+
+            Intent intent = new Intent(AlreadyLoggedInActivity.this, LoginActivity.class);
+
+            startActivity(intent);
+
+            finish();
+
+
+
+        }
+
+
+
     }
+
+
+
+}
 
 
 
