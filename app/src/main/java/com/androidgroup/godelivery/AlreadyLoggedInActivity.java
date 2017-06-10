@@ -57,6 +57,14 @@ public class AlreadyLoggedInActivity extends Activity {
 
 
     }
+    public void LoadLoginEmail()
+    {
+
+        SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(this);
+        loginEmailString = prefs.getString("GoDeliveryLoginEmail", null);
+
+
+    
 
 
 
