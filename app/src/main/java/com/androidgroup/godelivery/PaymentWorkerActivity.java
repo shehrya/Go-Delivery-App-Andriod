@@ -318,15 +318,234 @@ public class PaymentWorkerActivity extends Activity {
         }
     }
 
+    private String GetPaymentStatus(String myurl) throws IOException, UnsupportedEncodingException {
+        InputStream is = null;
+
+        // Only display the first 500 characters of the retrieved
+        // web page content.
+
+
+        try {
+            URL url = new URL(myurl);
+            HttpURLConnection conn = (HttpURLConnection) url.openConnection();
+            conn.setUseCaches(false);
+            conn.setDefaultUseCaches(false);
+            conn.addRequestProperty("Cache-Control", "no-cache");
+            conn.setReadTimeout(10000 /* milliseconds */);
+            conn.setConnectTimeout(15000 /* milliseconds */);
+            conn.setRequestMethod("GET");
+            conn.setDoInput(true);
+            // Starts the query
+            conn.connect();
+
+
+
+            is = conn.getInputStream();
+
+            BufferedReader textReader = new BufferedReader(new InputStreamReader(is));
+
+
+            String readlineTextRate;
+
+            String jobStatusString = null;
+
+
+
+            while ((readlineTextRate = textReader.readLine()) != null) {
+
+
+                jobStatusString = readlineTextRate;
+
+
+
+            }
+
+
+
+
+            if (conn.getResponseCode() == HttpURLConnection.HTTP_OK)
+            {
+                return "OK";
+            }
+            else
+            {
+                return "NetworkError";
+            }
+
+        } finally {
+
+
+            if (is != null)
+            {
+                is.close();
+
+
+
+            }
+
+        }
+    }
+
+
+    public void RemoveJob()
+    {
+
+        new CountDownTimer(2000, 1000) {
+
+            public void onTick(long millisUntilFinished) {
+
+            }
+
+            public void onFinish() {
+
+
+                new RemoveJobListing().execute("http://192.168.0.185/AndroidApps/GoDelivery/AcceptedJobs/removeJobListing.php");
+
+            }
+        }.start();
+    }
 
 
 
 
 
+    private class RemoveJobListing extends AsyncTask<String, Void, String> {
+        @Override
+        protected String doInBackground(String... urls) {
+
+            // params comes from the execute() call: params[0] is the url.
+            try {
+                return RemoveJob(urls[0]);
+            } catch (IOException e) {
+                return "Unable to retrieve web page. URL may be invalid.";
+            }
+        }
+
+
+        @Override
+        protected void onPreExecute() {
+            super.onPreExecute();
+
+        }
+
+        // onPostExecute displays the results of the AsyncTask.
+        @Override
+        protected void onPostExecute(String result) {
+
+
+            if (result.equals("OK"))
+            {
+                Intent intent = new Intent(PaymentJobWorkerActivity.this, DeciderActivity.class);
+
+                startActivity(intent);
+
+                finish();
+            }
+            else
+            {
+                Toast.makeText(getApplicationContext(), "Network Problem", Toast.LENGTH_SHORT).show();
+            }
+
+
+
+        }
+    }
+
+    private String RemoveJob(String myurl) throws IOException, UnsupportedEncodingException {
+
+        OutputStream os = null;
+
+        try {
+            URL url = new URL(myurl);
+            HttpURLConnection conn = (HttpURLConnection) url.openConnection();
+            conn.setReadTimeout(10000 /* milliseconds */);
+            conn.setConnectTimeout(15000 /* milliseconds */);
+            conn.setRequestMethod("POST");
+            conn.setDoInput(true);
+            conn.setDoOutput(true);
+            // Starts the query
+            conn.connect();
+
+
+            os = conn.getOutputStream();
+
+            Uri.Builder builder = new Uri.Builder()
+                    .appendQueryParameter("removeJobListing", jobID);
+
+
+            String query = builder.build().getEncodedQuery();
+
+
+
+            BufferedWriter writer = new BufferedWriter(
+                    new OutputStreamWriter(os, "UTF-8"));
+            writer.write(query);
+            writer.flush();
+            writer.close();
+
+            // Convert the InputStream into a string
+            // String contentAsString = readIt(is, len);
+
+            if (conn.getResponseCode() == HttpURLConnection.HTTP_OK)
+            {
+                return "OK";
+            }
+            else
+            {
+                return "NetworkError";
+            }
+
+
+            // Makes sure that the InputStream is closed after the app is
+            // finished using it.
+        } finally {
+
+            if (os != null)
+            {
+                os.close();
+
+            }
+
+        }
+    }
+
+
+
+    public void LogOutClicked(View v)
+    {
+        LogoutUser();
+
+        Intent intent = new Intent(PaymentJobWorkerActivity.this, AlreadyLoggedInActivity.class);
+
+        startActivity(intent);
+
+        finish();
+
+    }
+
+    public void LogoutUser()
+    {
+        SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(this);
+        SharedPreferences.Editor editor = preferences.edit();
+        editor.putString("GoDeliveryLoginEmail", null);
+        editor.apply();
+    }
+
+    public void RefreshClicked(View v)
+    {
+        Intent intent = new Intent(PaymentJobWorkerActivity.this, AlreadyLoggedInActivity.class);
+
+        startActivity(intent);
+
+        finish();
+
+    }
 
 
 }
 
 
 
-}
+
+
+
