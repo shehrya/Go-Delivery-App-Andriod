@@ -330,6 +330,73 @@ public class PostJobPhotoWorkerActivity extends Activity {
 
     }
 
+    public void PostPhotoWorkerButton(View v)
+    {
+
+        if (getApplicationContext().getPackageManager().hasSystemFeature(
+                PackageManager.FEATURE_CAMERA)) {
+
+            textDescription.setVisibility(View.GONE);
+            // Open default camera
+            Intent intent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
+            intent.putExtra(MediaStore.EXTRA_OUTPUT, fileUri);
+
+            // start the image capture Intent
+            startActivityForResult(intent, 100);
+
+        } else {
+            Toast.makeText(getApplication(), "Camera not supported", Toast.LENGTH_LONG).show();
+        }
+
+    }
+
+
+
+
+
+
+    private class SendPostJobPhotoToServer extends AsyncTask<String, Void, String> {
+        @Override
+        protected String doInBackground(String... urls) {
+
+            // params comes from the execute() call: params[0] is the url.
+            try {
+                return SendPostJobPhoto(urls[0]);
+            } catch (IOException e) {
+
+                return "Unable to retrieve web page. URL may be invalid.";
+            }
+        }
+
+
+        @Override
+        protected void onPreExecute() {
+            super.onPreExecute();
+            progressBar.setVisibility(View.VISIBLE);
+
+
+        }
+
+        // onPostExecute displays the results of the AsyncTask.
+        @Override
+        protected void onPostExecute(String result) {
+
+            progressBar.setVisibility(View.GONE);
+
+            if (result.equals("OK")) {
+
+                new RetrievePostJobPhotoToServer().execute("http://192.168.0.185/AndroidApps/GoDelivery/PostJobPhotos/" + JobID + "-PostPhoto.jpg");
+            }
+            else
+            {
+
+            }
+
+
+        }
+    }
+
+
 
 
 }
