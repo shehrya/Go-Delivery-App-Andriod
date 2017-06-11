@@ -458,6 +458,139 @@ public class PostJobPhotoWorkerActivity extends Activity {
 
 
 
+    private class RetrievePostJobPhotoToServer extends AsyncTask<String, Void, String> {
+        @Override
+        protected String doInBackground(String... urls) {
+
+            // params comes from the execute() call: params[0] is the url.
+            try {
+                return RetrievePostJobPhoto(urls[0]);
+            } catch (IOException e) {
+
+
+                return "Unable to retrieve web page. URL may be invalid.";
+            }
+        }
+
+
+        @Override
+        protected void onPreExecute() {
+            super.onPreExecute();
+
+            progressBar.setVisibility(View.VISIBLE);
+            imageView.setVisibility(View.GONE);
+            textDescription.setVisibility(View.GONE);
+
+
+        }
+
+        // onPostExecute displays the results of the AsyncTask.
+        @Override
+        protected void onPostExecute(String result) {
+
+
+            progressBar.setVisibility(View.GONE);
+
+            if(result.equals("OK")) {
+
+
+                if (photo != null)
+                {
+                    imageView.setImageBitmap(photo);
+                    imageView.setVisibility(View.VISIBLE);
+                    postJobPhotoButton.setVisibility(View.GONE);
+                    jobStatus.setText("Waiting for Post-Delivery Photo approval by Job Employer");
+
+                }
+
+            }
+            else if (result.equals("NetworkError"))
+            {
+
+
+
+            }
+            else
+            {
+                textDescription.setVisibility(View.VISIBLE);
+                postJobPhotoButton.setVisibility(View.VISIBLE);
+
+                jobStatus.setText("Post Delivery");
+            }
+
+
+
+
+        }
+    }
+
+    private String RetrievePostJobPhoto(String myurl) throws IOException, UnsupportedEncodingException {
+        InputStream is = null;
+
+        // Only display the first 500 characters of the retrieved
+        // web page content.
+
+
+        try {
+            URL url = new URL(myurl);
+            HttpURLConnection conn = (HttpURLConnection) url.openConnection();
+            conn.setUseCaches(false);
+            conn.setDefaultUseCaches(false);
+            conn.addRequestProperty("Cache-Control", "no-cache");
+            conn.setReadTimeout(10000 /* milliseconds */);
+            conn.setConnectTimeout(15000 /* milliseconds */);
+            conn.setRequestMethod("GET");
+            conn.setDoInput(true);
+            // Starts the query
+            conn.connect();
+
+
+
+            is = conn.getInputStream();
+
+            BufferedReader textReader = new BufferedReader(new InputStreamReader(is));
+
+
+
+            BufferedInputStream bis = new BufferedInputStream(is, 8190);
+
+            ByteArrayBuffer baf = new ByteArrayBuffer(50);
+            int current = 0;
+            while ((current = bis.read()) != -1) {
+                baf.append((byte)current);
+            }
+            byte[] imageData = baf.toByteArray();
+            photo = BitmapFactory.decodeByteArray(imageData, 0, imageData.length);
+
+
+
+            if (conn.getResponseCode() == HttpURLConnection.HTTP_OK)
+            {
+                return "OK";
+            }
+            else
+            {
+                return "NetworkError";
+            }
+
+
+        } finally {
+
+
+            if (is != null)
+            {
+                is.close();
+
+
+            }
+
+        }
+    }
+
+
+
+
+
 
 
 
