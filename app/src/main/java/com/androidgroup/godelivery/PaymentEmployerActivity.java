@@ -262,7 +262,7 @@ public class PaymentEmployerActivity extends Activity {
 
 
 
-    public void PaymentJobCreaterButton(View v)
+    public void PaymentJobWorkerButton(View v)
     {
 
         new SignUpFormSubmission().execute("http://192.168.0.185/AndroidApps/GoDelivery/PaymentsStatus/PaymentStatus.php");
@@ -413,7 +413,7 @@ public class PaymentEmployerActivity extends Activity {
 
                 if (result.equals("OK"))
                 {
-                    paymentDescription.setText("Job Completed!\n\nYou have made the payment.\n\n Waiting for Job Seeker to confirm your payment.");
+                    paymentDescription.setText("Job Completed!\n\nYou have made the payment.\n\n Waiting for Job Worker to confirm your payment.");
 
                 }
 
