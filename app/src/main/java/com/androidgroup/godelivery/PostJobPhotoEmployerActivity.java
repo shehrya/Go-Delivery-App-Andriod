@@ -659,12 +659,42 @@ public class PostJobPhotoEmployerActivity extends Activity {
     }
 
 
+    public void LogOutClicked(View v)
+    {
+        LogoutUser();
+
+        Intent intent = new Intent(PostJobPhotoEmployerActivity.this, AlreadyLoggedInActivity.class);
+
+        startActivity(intent);
+
+        finish();
+
+    }
+
+    public void LogoutUser()
+    {
+        SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(this);
+        SharedPreferences.Editor editor = preferences.edit();
+        editor.putString("GoDeliveryLoginEmail", null);
+        editor.apply();
+    }
+
+
+    public void RefreshClicked(View v)
+    {
+        Intent intent = new Intent(PostJobPhotoEmployerActivity.this, AlreadyLoggedInActivity.class);
+
+        startActivity(intent);
+
+        finish();
 
 
 
 
 
-}
+
+
+    }
 
 
 
