@@ -396,6 +396,73 @@ public class PostJobPhotoWorkerActivity extends Activity {
         }
     }
 
+    private String SendPostJobPhoto(String myurl) throws IOException, UnsupportedEncodingException {
+
+        OutputStream os = null;
+
+        try {
+            URL url = new URL(myurl);
+            HttpURLConnection conn = (HttpURLConnection) url.openConnection();
+            conn.setReadTimeout(10000 /* milliseconds */);
+            conn.setConnectTimeout(15000 /* milliseconds */);
+            conn.setRequestMethod("POST");
+            conn.setDoInput(true);
+            conn.setDoOutput(true);
+            // Starts the query
+            conn.connect();
+
+
+            os = conn.getOutputStream();
+
+            Uri.Builder builder = new Uri.Builder()
+                    .appendQueryParameter("GoDeliveryPostbase64", ba1)
+                    .appendQueryParameter("GoDeliveryPostImageName", (JobID + "-PostPhoto.jpg"));
+
+
+
+            String query = builder.build().getEncodedQuery();
+
+
+
+            BufferedWriter writer = new BufferedWriter(
+                    new OutputStreamWriter(os, "UTF-8"));
+            writer.write(query);
+            writer.flush();
+            writer.close();
+
+            // Convert the InputStream into a string
+            // String contentAsString = readIt(is, len);
+
+
+            if (conn.getResponseCode() == HttpURLConnection.HTTP_OK)
+            {
+                return "OK";
+            }
+            else
+            {
+                return "NetworkError";
+            }
+
+            // Makes sure that the InputStream is closed after the app is
+            // finished using it.
+        } finally {
+
+            if (os != null)
+            {
+                os.close();
+
+            }
+
+        }
+    }
+
+
+
+
+
+
+
+
 
 
 
