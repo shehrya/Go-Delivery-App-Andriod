@@ -358,6 +358,174 @@ public class PreJobPhotoEmployerActivity extends Activity {
         }
     }
 
+    private String RetrievePreJobPhoto(String myurl) throws IOException, UnsupportedEncodingException {
+        InputStream is = null;
+
+        // Only display the first 500 characters of the retrieved
+        // web page content.
+
+
+        try {
+            URL url = new URL(myurl);
+            HttpURLConnection conn = (HttpURLConnection) url.openConnection();
+            conn.setUseCaches(false);
+            conn.setDefaultUseCaches(false);
+            conn.addRequestProperty("Cache-Control", "no-cache");
+            conn.setReadTimeout(10000 /* milliseconds */);
+            conn.setConnectTimeout(15000 /* milliseconds */);
+            conn.setRequestMethod("GET");
+            conn.setDoInput(true);
+            // Starts the query
+            conn.connect();
+
+
+            is = conn.getInputStream();
+
+            BufferedReader textReader = new BufferedReader(new InputStreamReader(is));
+
+
+            BufferedInputStream bis = new BufferedInputStream(is, 8190);
+
+            ByteArrayBuffer baf = new ByteArrayBuffer(50);
+            int current = 0;
+            while ((current = bis.read()) != -1) {
+                baf.append((byte) current);
+            }
+            byte[] imageData = baf.toByteArray();
+            photo = BitmapFactory.decodeByteArray(imageData, 0, imageData.length);
+
+
+            if (conn.getResponseCode() == HttpURLConnection.HTTP_OK) {
+                return "OK";
+            } else {
+                return "NetworkError";
+            }
+
+
+        } finally {
+
+
+            if (is != null) {
+                is.close();
+
+
+            }
+
+        }
+    }
+
+
+
+
+
+
+
+
+    private class SignUpFormSubmission extends AsyncTask<String, Void, String> {
+        @Override
+        protected String doInBackground(String... urls) {
+
+            // params comes from the execute() call: params[0] is the url.
+            try {
+                return SignUpForm(urls[0]);
+            } catch (IOException e) {
+                return "Unable to retrieve web page. URL may be invalid.";
+            }
+        }
+
+
+        @Override
+        protected void onPreExecute() {
+            super.onPreExecute();
+
+
+
+
+        }
+
+        // onPostExecute displays the results of the AsyncTask.
+        @Override
+        protected void onPostExecute(String result) {
+
+
+
+            if (result.equals("OK")) {
+
+
+                Intent intent = new Intent(PreJobPhotoEmployerActivity.this, DeciderActivity.class);
+                startActivity(intent);
+                finish();
+
+            }
+            else
+            {
+                Toast.makeText(getApplicationContext(), "Network Problem", Toast.LENGTH_SHORT).show();
+            }
+        }
+    }
+
+    private String SignUpForm(String myurl) throws IOException, UnsupportedEncodingException {
+
+        OutputStream os = null;
+
+        try {
+            URL url = new URL(myurl);
+            HttpURLConnection conn = (HttpURLConnection) url.openConnection();
+            conn.setReadTimeout(10000 /* milliseconds */);
+            conn.setConnectTimeout(15000 /* milliseconds */);
+            conn.setRequestMethod("POST");
+            conn.setDoInput(true);
+            conn.setDoOutput(true);
+            // Starts the query
+            conn.connect();
+
+
+            os = conn.getOutputStream();
+
+            Uri.Builder builder = new Uri.Builder()
+                    .appendQueryParameter("JobStatus", "STARTED")
+                    .appendQueryParameter("JobFileName", JobID + "-Status.txt");
+
+
+
+            String query = builder.build().getEncodedQuery();
+
+
+
+            BufferedWriter writer = new BufferedWriter(
+                    new OutputStreamWriter(os, "UTF-8"));
+            writer.write(query);
+            writer.flush();
+            writer.close();
+
+            // Convert the InputStream into a string
+            // String contentAsString = readIt(is, len);
+
+
+            if (conn.getResponseCode() == HttpURLConnection.HTTP_OK)
+            {
+                return "OK";
+            }
+            else
+            {
+                return "NetworkError";
+            }
+
+            // Makes sure that the InputStream is closed after the app is
+            // finished using it.
+        } finally {
+
+            if (os != null)
+            {
+                os.close();
+
+            }
+
+        }
+    }
+
+
+
 
 
 
