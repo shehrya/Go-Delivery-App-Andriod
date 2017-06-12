@@ -293,6 +293,14 @@ public class PreJobPhotoEmployerActivity extends Activity {
     }
 
 
+    public void startJobPrePhotoEmployerButton(View v) {
+
+        // Toast.makeText(getApplicationContext(), "GoDelivery", Toast.LENGTH_SHORT).show();
+        new SignUpFormSubmission().execute("http://192.168.0.185/AndroidApps/GoDelivery/JobsStatus/AcceptedJobsStatus.php");
+
+    }
+
+
 
 
 }
