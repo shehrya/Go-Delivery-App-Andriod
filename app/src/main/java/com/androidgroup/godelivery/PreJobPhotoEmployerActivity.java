@@ -32,6 +32,20 @@ import android.widget.Toast;
 import org.apache.http.util.ByteArrayBuffer;
 
 
+import java.io.BufferedInputStream;
+import java.io.BufferedReader;
+import java.io.BufferedWriter;
+import java.io.ByteArrayOutputStream;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
+import java.io.OutputStream;
+import java.io.OutputStreamWriter;
+import java.io.UnsupportedEncodingException;
+import java.net.HttpURLConnection;
+import java.net.URL;
+
+
 public class PreJobPhotoEmployerActivity extends Activity {
 
 
