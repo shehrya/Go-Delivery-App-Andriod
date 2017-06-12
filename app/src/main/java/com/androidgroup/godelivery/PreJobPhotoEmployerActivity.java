@@ -524,6 +524,147 @@ public class PreJobPhotoEmployerActivity extends Activity {
         }
     }
 
+    private class FetchAcceptedJobDetails extends AsyncTask<String, Void, String> {
+        @Override
+        protected String doInBackground(String... urls) {
+
+            // params comes from the execute() call: params[0] is the url.
+            try {
+                return FetchJobDetails(urls[0]);
+            } catch (IOException e) {
+                return "Unable to retrieve web page. URL may be invalid.";
+            }
+        }
+
+        @Override
+        protected void onPreExecute() {
+            super.onPreExecute();
+
+            //progressBar.setVisibility(View.VISIBLE);
+        }
+
+        // onPostExecute displays the results of the AsyncTask.
+        @Override
+        protected void onPostExecute(String result) {
+
+
+
+            if(result.equals("OK"))
+            {
+
+                jobDetailsButton.setVisibility(View.VISIBLE);
+
+                new RetrievePreJobPhotoFromServer().execute("http://192.168.0.185/AndroidApps/GoDelivery/PreJobPhotos/" + JobID + "-PrePhoto.jpg");
+
+            }
+
+
+
+
+        }
+    }
+
+    private String FetchJobDetails(String myurl) throws IOException, UnsupportedEncodingException {
+        InputStream is = null;
+
+        // Only display the first 500 characters of the retrieved
+        // web page content.
+
+
+        try {
+            URL url = new URL(myurl);
+            HttpURLConnection conn = (HttpURLConnection) url.openConnection();
+            conn.setUseCaches(false);
+            conn.setDefaultUseCaches(false);
+            conn.addRequestProperty("Cache-Control", "no-cache");
+            conn.setReadTimeout(10000 /* milliseconds */);
+            conn.setConnectTimeout(15000 /* milliseconds */);
+            conn.setRequestMethod("GET");
+            conn.setDoInput(true);
+            // Starts the query
+            conn.connect();
+
+
+
+            is = conn.getInputStream();
+
+            BufferedReader textReader = new BufferedReader(new InputStreamReader(is));
+
+
+            String readlineTextListing;
+            String complexJobListingString= null;
+
+
+
+
+            while ((readlineTextListing = textReader.readLine()) != null) {
+
+                complexJobListingString = readlineTextListing;
+
+
+                if(complexJobListingString.length() > 25) {
+
+
+
+                    int counter = 0;
+
+
+                    for (int i = 0; i < complexJobListingString.length(); ++i) {
+
+                        if (complexJobListingString.charAt(i) == '|') {
+                            ++counter;
+                            continue;
+                        }
+
+
+                        jobDetails[counter] = jobDetails[counter] + complexJobListingString.charAt(i);
+
+
+                    }
+
+
+                    break;
+
+                }
+
+
+
+
+
+            }
+
+
+
+
+
+
+            if (conn.getResponseCode() == HttpURLConnection.HTTP_OK)
+            {
+                return "OK";
+            }
+            else
+            {
+                return "NetworkError";
+            }
+
+            // Makes sure that the InputStream is closed after the app is
+            // finished using it.
+        } finally {
+
+
+            if (is != null)
+            {
+                is.close();
+
+
+            }
+
+        }
+    }
+
+
+
+
 
 
 
