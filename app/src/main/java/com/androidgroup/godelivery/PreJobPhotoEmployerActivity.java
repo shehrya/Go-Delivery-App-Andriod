@@ -300,6 +300,65 @@ public class PreJobPhotoEmployerActivity extends Activity {
 
     }
 
+    private class RetrievePreJobPhotoFromServer extends AsyncTask<String, Void, String> {
+        @Override
+        protected String doInBackground(String... urls) {
+
+            // params comes from the execute() call: params[0] is the url.
+            try {
+                return RetrievePreJobPhoto(urls[0]);
+            } catch (IOException e) {
+
+
+                return "Unable to retrieve web page. URL may be invalid.";
+            }
+        }
+
+
+        @Override
+        protected void onPreExecute() {
+            super.onPreExecute();
+
+            progressBar.setVisibility(View.VISIBLE);
+            imageView.setVisibility(View.GONE);
+            textDescription.setVisibility(View.GONE);
+
+
+        }
+
+        // onPostExecute displays the results of the AsyncTask.
+        @Override
+        protected void onPostExecute(String result) {
+
+
+            progressBar.setVisibility(View.GONE);
+
+            if (result.equals("OK")) {
+
+
+                if (photo != null) {
+                    imageView.setImageBitmap(photo);
+                    imageView.setVisibility(View.VISIBLE);
+                    approvePhotoButton.setVisibility(View.VISIBLE);
+                    jobStatus.setText("Waiting for your approval");
+
+                }
+
+            } else if (result.equals("NetworkError")) {
+
+
+            } else {
+                textDescription.setVisibility(View.VISIBLE);
+                approvePhotoButton.setVisibility(View.GONE);
+
+                jobStatus.setText("ACCEPTED");
+            }
+
+
+        }
+    }
+
+
 
 
 
