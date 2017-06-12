@@ -88,6 +88,51 @@ public class PreJobPhotoEmployerActivity extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.pre_photo_employer);
 
+        Intent intent = getIntent();
+        JobID = intent.getStringExtra("AcceptedJobIDNumber");
+
+        Typeface font = Typeface.createFromAsset(getAssets(), "FancyFont_1.ttf");
+
+        jobStatusTitle = (TextView) findViewById(R.id.PreJobEmployerStatusTitleID);
+        jobStatus = (TextView) findViewById(R.id.PreJobEmployerStatusID);
+        progressBar = (ProgressBar) findViewById(R.id.PrePhotoEmployerProgressBarID);
+        imageView = (ImageView) findViewById(R.id.PrePhotoEmployerImageID);
+        textDescription = (TextView) findViewById(R.id.PrePhotoEmployerTextDescriptionID);
+        approvePhotoButton = (Button) findViewById(R.id.PreJobEmployerApproveButtonID);
+        jobDetailsButton = (Button) findViewById(R.id.PreJobEmployerJobDetailsButtonID);
+        LogOutButton = (Button) findViewById(R.id.LogoutButtonID);
+
+        LogOutButton.setTypeface(font);
+        LogOutButton.setTextColor(Color.WHITE);
+
+        RefreshButton = (Button) findViewById(R.id.RefreshButtonID);
+
+        RefreshButton.setTypeface(font);
+        RefreshButton.setTextColor(Color.WHITE);
+
+
+
+
+
+
+        jobStatusTitle.setTypeface(font);
+        jobStatusTitle.setTextColor(Color.WHITE);
+
+        jobStatus.setTypeface(font);
+        jobStatus.setTextColor(Color.WHITE);
+
+        textDescription.setTypeface(font);
+        textDescription.setTextColor(Color.WHITE);
+
+        approvePhotoButton.setTypeface(font);
+        approvePhotoButton.setTextColor(Color.WHITE);
+
+        jobDetailsButton.setTypeface(font);
+        jobDetailsButton.setTextColor(Color.WHITE);
+
+
+
+
 
     }
 
