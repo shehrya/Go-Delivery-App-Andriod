@@ -251,16 +251,6 @@
 
 
 
-
-        <TextView
-
-            android:id="@+id/GeneralDeliveryPersonNameID"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:textSize="14dp"
-            android:gravity="center"
-            android:layout_gravity="center"
-            android:paddingTop="5dp"
             android:paddingBottom="5dp"
             />
 
