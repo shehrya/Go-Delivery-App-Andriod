@@ -1,0 +1,138 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingLeft="10dp"
+    android:paddingRight="10dp"
+    android:orientation="vertical">
+
+
+
+    <EditText
+        android:id="@+id/productNameID"
+        android:layout_width="match_parent"
+        android:layout_height="45dp"
+        android:hint="Product Name"
+        android:textSize="16dp"
+        android:gravity="center"
+        android:inputType="textPersonName"
+        />
+
+
+
+    <EditText
+        android:id="@+id/PackageWeightID"
+        android:layout_width="match_parent"
+        android:layout_height="45dp"
+        android:hint="Weight (kg)"
+        android:textSize="16dp"
+        android:gravity="center"
+        android:inputType="phone"
+        />
+
+
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:weightSum="4"
+        android:paddingLeft="15dp"
+        android:paddingRight="15dp">
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:layout_gravity="center"
+            android:text="Size (inch)"
+            android:textSize="15dp"
+            />
+
+        <EditText
+            android:id="@+id/PackageLengthID"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:layout_gravity="center"
+            android:hint="L"
+            android:inputType="phone"
+            />
+        <EditText
+            android:id="@+id/PackageWidthID"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:layout_gravity="center"
+            android:hint="W"
+            android:inputType="phone"
+            />
+        <EditText
+            android:id="@+id/PackageHeightID"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:layout_gravity="center"
+            android:hint="H"
+            android:inputType="phone"
+            />
+
+    </LinearLayout>
+
+    <EditText
+        android:id="@+id/pickUpPersonNameID"
+        android:layout_width="match_parent"
+        android:layout_height="45dp"
+        android:hint="Name (PickUp From)"
+        android:textSize="16dp"
+        android:gravity="center"
+        android:inputType="textPersonName"
+        />
+
+
+
+    <EditText
+        android:id="@+id/pickUpPersonContactNumberID"
+        android:layout_width="match_parent"
+        android:layout_height="45dp"
+        android:hint="Contact Number (PickUp From)"
+        android:textSize="16dp"
+        android:gravity="center"
+        android:inputType="phone"
+        />
+
+
+
+
+    <EditText
+        android:id="@+id/recipientNameID"
+        android:layout_width="match_parent"
+        android:layout_height="45dp"
+        android:hint="Name (Recipient)"
+        android:textSize="16dp"
+        android:gravity="center"
+        android:inputType="textPersonName"
+        />
+
+
+
+    <EditText
+        android:id="@+id/recipientContactNumberID"
+        android:layout_width="match_parent"
+        android:layout_height="45dp"
+        android:hint="Contact Number (Recipient)"
+        android:textSize="16dp"
+        android:gravity="center"
+        android:inputType="phone"
+        />
+
+
+
+
+
+</LinearLayout>
