@@ -38,7 +38,8 @@
                 android:layout_gravity="center"
                 android:gravity="center"
                 android:background="@drawable/custom_button"
-                />
+                   />
+
 
         </LinearLayout>
 
@@ -48,15 +49,6 @@
             android:layout_height="match_parent"
             android:layout_weight="2">
 
-        </LinearLayout>
-
-        <LinearLayout
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            >
-
-        </LinearLayout>
 
 
 
