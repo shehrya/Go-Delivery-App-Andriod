@@ -434,10 +434,10 @@
             android:id="@+id/CreateJobButtonID"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
+            android:background="@drawable/custom_button"
+            android:onClick="CreateJobButtonClicked"
             android:text="Create Job"
             android:textSize="15dp"
-            android:onClick="CreateJobButtonClicked"
-            android:background="@drawable/custom_button"
 
             />
 
