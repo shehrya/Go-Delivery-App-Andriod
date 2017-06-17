@@ -1,0 +1,248 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:weightSum="10"
+    android:padding="15dp"
+    android:background="@drawable/main_background">
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="0.5"
+        android:orientation="horizontal"
+        android:weightSum="4">
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:background="#000000">
+
+
+            <Button
+                android:id="@+id/RefreshButtonID"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:text="Refresh"
+                android:textSize="15dp"
+                android:onClick="RefreshClicked"
+                android:layout_gravity="center"
+                android:gravity="center"
+                android:background="@drawable/custom_button"
+                />
+
+        </LinearLayout>
+
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="2">
+
+        </LinearLayout>
+
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:background="#000000">
+
+
+            <Button
+                android:id="@+id/LogoutButtonID"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:text="Logout"
+                android:textSize="15dp"
+                android:onClick="LogOutClicked"
+                android:layout_gravity="center"
+                android:gravity="center"
+                android:background="@drawable/custom_button"
+                />
+
+        </LinearLayout>
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="0.1">
+
+    </LinearLayout>
+
+
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="0.8"
+        android:background="@drawable/text_fields_background">
+
+        <TextView
+            android:id="@+id/PostJobSeekerStatusTitleID"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:textSize="18dp"
+            android:text="Job Status"
+            android:textStyle="bold"
+            android:gravity="center"
+            android:layout_gravity="center"
+            />
+
+    </LinearLayout>
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="0.6"
+        android:background="@drawable/dark_text_fields_background">
+
+        <TextView
+            android:id="@+id/PostJobSeekerStatusID"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:textSize="13dp"
+            android:textStyle="bold"
+            android:gravity="center"
+            android:layout_gravity="center"
+            />
+
+    </LinearLayout>
+
+
+
+
+
+
+
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="6"
+        android:padding="25dp">
+
+        <ProgressBar
+            android:id="@+id/PostPhotoSeekerProgressBarID"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:indeterminate="true"
+            style="?android:attr/progressBarStyle"
+            android:layout_gravity="center"
+            android:gravity="center"
+            android:layout_centerInParent="true"
+            android:visibility="gone"
+
+            />
+
+        <TextView
+            android:id="@+id/PostPhotoSeekerTextDescriptionID"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:textSize="16dp"
+            android:text="Great Job! The Job is almost finished.\n\nNext, at the delivery point,  post a photo that includes YOU, Recipient Person, and the ITEM. Without this photo your job won't complete. Tap Post-Delivery photo button."
+            android:gravity="center"
+            android:layout_centerInParent="true"
+            android:visibility="gone"
+            android:background="@drawable/text_fields_background"
+            />
+
+
+
+        <ImageView
+            android:id="@+id/PostPhotoSeekerImageID"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:visibility="gone"
+            />
+
+
+    </RelativeLayout>
+
+
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:paddingLeft="50dp"
+            android:paddingRight="50dp">
+
+            <Button
+                android:id="@+id/PostJobSeekerJobDetailsButtonID"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:text="Job Details"
+                android:textSize="15dp"
+                android:gravity="center"
+                android:layout_gravity="center"
+                android:onClick="jobDetailsPostPhotoSeekerButton"
+                android:background="@drawable/custom_button"
+                android:visibility="gone"/>
+
+
+        </LinearLayout>
+
+
+
+    </LinearLayout>
+
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:orientation="horizontal">
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:paddingLeft="50dp"
+            android:paddingRight="50dp">
+
+
+            <Button
+                android:id="@+id/PostPhotoSeekerButtonID"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:text="Post-Delivery Photo"
+                android:textSize="15dp"
+                android:gravity="center"
+                android:layout_gravity="center"
+                android:onClick="PostPhotoSeekerButton"
+                android:visibility="gone"
+                android:background="@drawable/custom_button"/>/>
+
+
+        </LinearLayout>
+
+
+
+
+
+    </LinearLayout>
+
+
+
+
+
+
+</LinearLayout>
+
+
