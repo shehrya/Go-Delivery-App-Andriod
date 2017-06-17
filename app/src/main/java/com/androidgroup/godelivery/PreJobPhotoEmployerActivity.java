@@ -12,6 +12,7 @@ public class PreJobPhotoEmployerActivity extends Activity {
         setContentView(R.layout.pre_photo_employer);
 
 
+
     }
 
 
