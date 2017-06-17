@@ -13,5 +13,17 @@ public class PreJobPhotoWorkerActivity extends Activity {
 
     }
 
+    public void RefreshClicked4(View v)
+    {
+        Intent intent = new Intent(PreJobPhotoWorkerActivity.this, AlreadyLoggedInActivity.class);
+
+        startActivity(intent);
+
+        finish();
+
+
+
+
+    }
 
 }
