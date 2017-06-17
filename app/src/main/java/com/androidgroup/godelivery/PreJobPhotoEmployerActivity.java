@@ -687,6 +687,8 @@ public class PreJobPhotoEmployerActivity extends Activity {
     }
 
 
+    //done
+
     public void RefreshClicked(View v)
     {
         Intent intent = new Intent(PreJobPhotoEmployerActivity.this, AlreadyLoggedInActivity.class);
