@@ -1,0 +1,149 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent" android:layout_height="match_parent"
+    android:weightSum="6"
+    android:orientation="vertical"
+    android:padding="15dp"
+    android:background="@drawable/main_background">
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="0.5"
+        android:orientation="horizontal"
+        android:weightSum="4">
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:background="#000000">
+
+
+            <Button
+                android:id="@+id/RefreshButtonID"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:text="Refresh"
+                android:textSize="15dp"
+                android:onClick="RefreshClicked"
+                android:layout_gravity="center"
+                android:gravity="center"
+                android:background="@drawable/custom_button"
+                />
+
+        </LinearLayout>
+
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="2">
+
+        </LinearLayout>
+
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:background="#000000">
+
+
+            <Button
+                android:id="@+id/LogoutButtonID"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:text="Logout"
+                android:textSize="15dp"
+                android:onClick="LogOutClicked"
+                android:layout_gravity="center"
+                android:gravity="center"
+                android:background="@drawable/custom_button"
+                />
+
+        </LinearLayout>
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="0.1">
+
+    </LinearLayout>
+
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:background="@drawable/dark_text_fields_background">
+
+        <TextView
+            android:id="@+id/PaymentJobCreaterTitleID"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:text="Payment"
+            android:textSize="25dp"
+            android:layout_gravity="center"
+            android:gravity="center"/>
+
+
+    </LinearLayout>
+
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="3.4"
+        android:paddingLeft="25dp"
+        android:paddingRight="25dp"
+        android:background="@drawable/text_fields_background">
+
+        <TextView
+            android:id="@+id/PaymentJobCreaterDescriptionID"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:textSize="18dp"
+            android:layout_gravity="center"
+            android:gravity="center"/>
+
+
+    </LinearLayout>
+
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:paddingLeft="50dp"
+        android:paddingRight="50dp"
+     >
+
+
+
+        <Button
+
+            android:id="@+id/PaymentJobCreaterButtonID"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:text="Pay"
+            android:layout_gravity="center"
+            android:gravity="center"
+            android:onClick="PaymentJobCreaterButton"
+            android:visibility="gone"
+            android:background="@drawable/custom_button"
+            />
+
+    </LinearLayout>
+
+
+
+
+
+
+</LinearLayout>
