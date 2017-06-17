@@ -5,13 +5,11 @@ import android.os.Bundle;
 
 public class PreJobPhotoEmployerActivity extends Activity {
 
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.pre_photo_employer);
 
-<<<<<<< HEAD
         Intent intent = getIntent();
         JobID = intent.getStringExtra("AcceptedJobIDNumber");
 
@@ -621,12 +619,6 @@ public class PreJobPhotoEmployerActivity extends Activity {
 
         finish();
 
-
-
-
-
-=======
->>>>>>> master
 
     }
 
