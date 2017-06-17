@@ -3,19 +3,18 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:paddingTop="10dp"
+    android:paddingTop="20dp"
     android:paddingBottom="10dp"
     android:paddingLeft="25dp"
     android:paddingRight="25dp"
     android:layout_weight="10"
-    android:background="@drawable/main_background"
-    >
+    android:background="@drawable/main_background">
 
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_weight="0.2"
+        android:layout_weight="0.6"
         android:orientation="horizontal"
         android:weightSum="4">
 
@@ -33,6 +32,7 @@
                 android:text="Back"
                 android:textSize="15dp"
                 android:onClick="RefreshClicked"
+                android:textColor="#FFFFFF"
                 android:layout_gravity="center"
                 android:gravity="center"
                 android:background="@drawable/custom_button"
@@ -62,20 +62,89 @@
     </LinearLayout>
 
 
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_weight="0.3">
+        android:layout_weight="1.5">
 
         <TextView
-            android:id="@+id/ForgotPasswordTitleID"
+            android:id="@+id/SignUpTitleID"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:textSize="25dp"
-            android:text="Forgot Password"
+            android:textSize="30dp"
+            android:text="Sign Up"
+            android:textColor="#FFFFFF"
             android:gravity="center"
-            android:layout_gravity="center"
-            android:background="@drawable/text_fields_background"/>
+            android:layout_gravity="center"/>
+
+    </LinearLayout>
+
+
+
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:orientation="vertical"
+        android:paddingLeft="20dp"
+        android:paddingRight="20dp">
+
+        <EditText
+            android:paddingBottom="5dp"
+            android:id="@+id/nameID"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:textSize="20dp"
+            android:hint="Name"
+            android:textColor="#FFFFFF"
+            android:textColorHint="#FFFFFF"
+            android:gravity="center"
+            android:background="#000000"/>
+
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="0.1">
+
+
+
+    </LinearLayout>
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:orientation="vertical"
+        android:paddingLeft="20dp"
+        android:paddingRight="20dp">
+
+        <EditText
+            android:id="@+id/emailID"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:textSize="20dp"
+            android:hint="Email"
+            android:textColor="#FFFFFF"
+            android:textColorHint="#FFFFFF"
+            android:inputType="textEmailAddress"
+            android:gravity="center"
+            android:background="#000000"/>
+
+
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="0.1">
 
     </LinearLayout>
 
@@ -84,7 +153,73 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_weight="0.3"
+        android:layout_weight="1"
+        android:orientation="vertical"
+        android:paddingLeft="20dp"
+        android:paddingRight="20dp">
+
+        <EditText
+            android:id="@+id/passwordID"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:textSize="20dp"
+            android:hint="Password"
+            android:textColor="#FFFFFF"
+            android:textColorHint="#FFFFFF"
+            android:inputType="textPassword"
+            android:gravity="center"
+            android:background="#000000"/>
+
+
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="0.1">
+
+    </LinearLayout>
+
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:orientation="vertical"
+        android:paddingLeft="20dp"
+        android:paddingRight="20dp">
+
+
+        <EditText
+            android:id="@+id/phoneNumberID"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:textSize="20dp"
+            android:hint="Phone"
+            android:textColor="#FFFFFF"
+            android:textColorHint="#FFFFFF"
+            android:inputType="phone"
+            android:gravity="center"
+            android:background="#000000"/>
+
+
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="0.1">
+
+    </LinearLayout>
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
         android:orientation="vertical"
         android:paddingLeft="20dp"
         android:paddingRight="20dp">
@@ -96,6 +231,7 @@
             android:textSize="18dp"
             android:text="What is your Secret Word ?"
             android:gravity="center"
+            android:textColor="#FFFFFF"
             android:layout_gravity="center"
             android:background="@drawable/text_fields_background"/>
 
@@ -107,180 +243,94 @@
         android:layout_height="0dp"
         android:layout_weight="0.1">
 
-
-
     </LinearLayout>
-
 
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_weight="0.3"
+        android:layout_weight="1"
         android:orientation="vertical"
         android:paddingLeft="20dp"
-        android:paddingRight="20dp">
+        android:paddingRight="20dp"
+        >
+
 
         <EditText
-            android:paddingBottom="5dp"
             android:id="@+id/SecurityAnswerID"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
+            android:textSize="20dp"
             android:hint="Enter Secret Word"
-            android:textSize="20dp"
             android:gravity="center"
-            android:background="#000000"/>
-
-
-    </LinearLayout>
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="0.1">
-    </LinearLayout>
-
-
-
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="0.3"
-        android:orientation="vertical"
-        android:paddingLeft="20dp"
-        android:paddingRight="20dp">
-
-        <EditText
-            android:paddingBottom="5dp"
-            android:id="@+id/EmailID"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:hint="Enter Email"
-            android:textSize="20dp"
-            android:gravity="center"
-            android:background="#000000"/>
-
-
-    </LinearLayout>
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="0.2">
-    </LinearLayout>
-
-
-
-
-
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="0.3"
-        android:orientation="vertical"
-        android:paddingLeft="20dp"
-        android:paddingRight="20dp">
-
-        <EditText
-            android:paddingBottom="5dp"
-            android:id="@+id/NewPasswordID"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:hint="New Password"
-            android:textSize="20dp"
-            android:gravity="center"
-            android:background="#000000"/>
-
-
-    </LinearLayout>
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="0.1">
-    </LinearLayout>
-
-
-
-
-
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="0.3"
-        android:orientation="vertical"
-        android:paddingLeft="20dp"
-        android:paddingRight="20dp">
-
-        <EditText
-            android:paddingBottom="5dp"
-            android:id="@+id/ConfirmPasswordID"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:hint="Confirm Password"
-            android:textSize="20dp"
-            android:gravity="center"
-            android:background="#000000"/>
-
-
-    </LinearLayout>
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="0.1">
-
-    </LinearLayout>
-
-
-
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="0.4"
-        android:orientation="vertical"
-        android:paddingLeft="20dp"
-        android:paddingRight="20dp">
-
-        <Button
-            android:id="@+id/ResetPasswordButtonID"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:textSize="20dp"
-            android:text="Reset Password"
-            android:gravity="center"
-            android:onClick="ResetPasswordButtonClicked"
-            android:background="@drawable/custom_button"
+            android:background="#000000"
+            android:textColor="#FFFFFF"
+            android:textColorHint="#FFFFFF"
             />
 
 
+
     </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="0.1">
+
+    </LinearLayout>
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+
+        android:paddingLeft="50dp"
+        android:paddingRight="50dp">
+
+
+        <Button
+            android:id="@+id/SignUpSubmitButtonID"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:text="Submit"
+            android:textSize="20dp"
+            android:onClick="SubmitButtonClicked"
+            android:background="@drawable/custom_button"
+            android:textColor="#FFFFFF" />
+
+
+
+    </LinearLayout>
+
+
+
+
 
 
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_weight="0.4">
+        android:layout_weight="2">
 
         <ProgressBar
-            android:id="@+id/ProgressBarID"
+            android:paddingTop="40dp"
+            android:id="@+id/SignUpProgressBarID"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:indeterminate="true"
             style="?android:attr/progressBarStyle"
             android:layout_gravity="center"
             android:gravity="center"
-            android:visibility="gone"
             android:layout_centerInParent="true"
+            android:visibility="gone"
 
             />
 
-
     </RelativeLayout>
+
+
+
 
 
 
